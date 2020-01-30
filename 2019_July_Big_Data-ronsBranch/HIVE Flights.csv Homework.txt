@@ -1,0 +1,86 @@
+(1)
+
+SELECT SOURCE_AIRPORT, AVG(DEPARTURE_DELAY) AS AVG_DELAY FROM FLIGHTS_DATA GROUP BY SOURCE_AIRPORT ORDER BY AVG_DELAY DESC;
+Query ID = ronikjl831955935_20190807163849_6d42560e-4e05-4e2c-ac07-6ecbbcec4a2c
+Total jobs = 2
+Launching Job 1 out of 2
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1565027621501_0530, Tracking URL = http://cxln2.c.thelab-240901.internal:8088/proxy/application_1565027621501_0530/
+Kill Command = /usr/hdp/2.6.2.0-205/hadoop/bin/hadoop job  -kill job_1565027621501_0530
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2019-08-07 16:38:55,223 Stage-1 map = 0%,  reduce = 0%
+2019-08-07 16:39:02,578 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.01 sec
+2019-08-07 16:39:08,882 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 9.19 sec
+MapReduce Total cumulative CPU time: 9 seconds 190 msec
+Ended Job = job_1565027621501_0530
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1565027621501_0531, Tracking URL = http://cxln2.c.thelab-240901.internal:8088/proxy/application_1565027621501_0531/
+Kill Command = /usr/hdp/2.6.2.0-205/hadoop/bin/hadoop job  -kill job_1565027621501_0531
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2019-08-07 16:39:15,762 Stage-2 map = 0%,  reduce = 0%
+2019-08-07 16:39:23,072 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 3.0 sec
+2019-08-07 16:39:29,331 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 5.8 sec
+MapReduce Total cumulative CPU time: 5 seconds 800 msec
+Ended Job = job_1565027621501_0531
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 9.19 sec   HDFS Read: 24647585 HDFS Write: 9021 SUCCESS
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 5.8 sec   HDFS Read: 14425 HDFS Write: 6623 SUCCESS
+Total MapReduce CPU Time Spent: 14 seconds 990 msec
+OK
+PPG     56.25
+EGE     32.0
+OTH     24.533333333333335
+LAR     18.892857142857142
+RDD     18.55294117647059
+MTJ     18.363636363636363
+PUB     17.54
+EWR     16.478549005929544
+CIC     15.931034482758621
+....
+YAK     -10.833333333333334
+HDN     -11.0
+CDV     -12.5
+
+
+
+
+(2) I know my query is right but for some reason I can't get hdfs to write the solution.
+
+ SELECT SOURCE_AIRPORT , COUNT(*) AS NUMBER_OF_FLIGHTS FROM FLIGHTS_DATA WHERE (SOURCE_AIRPORT = "JFK" AND DESTINATION_AIRPORT = "LAX") AND (FLIGHT_DATE BETWEEN "4/1/2014" AND "4/
+15/2014") GROUP BY SOURCE_AIRPORT;
+Query ID = ronikjl831955935_20190807180012_de32cc60-13d6-44b7-a0e1-aba79f163d71
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1565027621501_0549, Tracking URL = http://cxln2.c.thelab-240901.internal:8088/proxy/application_1565027621501_0549/
+Kill Command = /usr/hdp/2.6.2.0-205/hadoop/bin/hadoop job  -kill job_1565027621501_0549
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2019-08-07 18:00:23,654 Stage-1 map = 0%,  reduce = 0%
+2019-08-07 18:00:32,008 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 7.1 sec
+2019-08-07 18:00:38,264 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 10.52 sec
+MapReduce Total cumulative CPU time: 10 seconds 520 msec
+Ended Job = job_1565027621501_0549
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 10.52 sec   HDFS Read: 24649454 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 10 seconds 520 msec
+OK
+Time taken: 26.812 seconds
